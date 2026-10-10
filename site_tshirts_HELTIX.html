@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HELTIX — T-shirts</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;background:#f4f4f4;color:#111}
+header{background:#111;color:#fff;padding:18px 6%;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.logo{font-size:27px;font-weight:900;letter-spacing:4px}
+nav{display:flex;gap:24px;align-items:center}
+nav a{color:#fff;text-decoration:none;font-weight:700}
+.cart{background:#fff;color:#111;border:0;padding:10px 16px;border-radius:25px;font-weight:800;cursor:pointer}
+.hero{min-height:60vh;display:flex;align-items:center;padding:70px 6%;background:#111;color:#fff}
+.hero div{max-width:720px}
+.hero small{letter-spacing:4px;color:#aaa}
+.hero h1{font-size:clamp(55px,10vw,105px);line-height:.9;margin:20px 0}
+.hero p{font-size:19px;color:#ccc;margin-bottom:28px;line-height:1.5}
+.btn{display:inline-block;background:#fff;color:#111;text-decoration:none;padding:15px 24px;border-radius:30px;font-weight:900}
+section{padding:65px 6%}
+.title{font-size:38px;margin-bottom:32px}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:24px}
+.card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 8px 25px #0001}
+.shirt-area{height:280px;background:#ddd;display:flex;align-items:center;justify-content:center}
+.tshirt{width:155px;height:190px;background:#f8f8f8;position:relative;clip-path:polygon(19% 0,38% 9%,62% 9%,81% 0,100% 18%,82% 34%,76% 100%,24% 100%,18% 34%,0 18%);box-shadow:0 3px 10px #0002}
+.tshirt:after{content:"HELTIX";position:absolute;left:27%;top:27%;font-size:9px;font-weight:900;letter-spacing:1px}
+.tshirt.dark{background:#151515}
+.tshirt.dark:after{color:#fff}
+.tshirt.grey{background:#888}
+.tshirt.grey:after{color:#fff}
+.tshirt.cream{background:#eee}
+.tshirt.oversize{width:170px;height:195px}
+.info{padding:19px}
+.info h3{font-size:19px;margin-bottom:8px}
+.price{font-weight:900;font-size:18px;margin-bottom:14px}
+.buy{width:100%;background:#111;color:#fff;border:0;padding:12px;border-radius:11px;font-weight:800;cursor:pointer}
+.about{background:#111;color:#fff;text-align:center}
+.about p{max-width:650px;margin:auto;color:#ccc;line-height:1.6}
+footer{background:#000;color:#aaa;text-align:center;padding:28px}
+#toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%) translateY(100px);background:#111;color:#fff;padding:14px 22px;border-radius:30px;transition:.3s;z-index:20}
+#toast.show{transform:translateX(-50%) translateY(0)}
+@media(max-width:650px){nav a{display:none}.shirt-area{height:245px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">HELTIX</div>
+  <nav>
+    <a href="#collection">Collection</a>
+    <a href="#marque">La marque</a>
+    <button class="cart" onclick="showCart()">🛒 Panier (<span id="count">0</span>)</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div>
+    <small>HELTIX — DROP 01</small>
+    <h1>HELTIX.</h1>
+    <p>Des essentiels minimalistes. Le logo HELTIX brodé discrètement au niveau du cœur.</p>
+    <a class="btn" href="#collection">Voir les T-shirts →</a>
+  </div>
+</section>
+
+<section id="collection">
+<h2 class="title">T-shirts HELTIX</h2>
+<div class="products">
+
+<article class="card">
+<div class="shirt-area"><div class="tshirt"></div></div>
+<div class="info"><h3>HELTIX Essential</h3><div class="price">29,99 €</div><button class="buy" onclick="add('HELTIX Essential',29.99)">Ajouter au panier</button></div>
+</article>
+
+<article class="card">
+<div class="shirt-area"><div class="tshirt dark"></div></div>
+<div class="info"><h3>HELTIX Black</h3><div class="price">29,99 €</div><button class="buy" onclick="add('HELTIX Black',29.99)">Ajouter au panier</button></div>
+</article>
+
+<article class="card">
+<div class="shirt-area"><div class="tshirt grey"></div></div>
+<div class="info"><h3>HELTIX Grey</h3><div class="price">32,99 €</div><button class="buy" onclick="add('HELTIX Grey',32.99)">Ajouter au panier</button></div>
+</article>
+
+<article class="card">
+<div class="shirt-area"><div class="tshirt cream"></div></div>
+<div class="info"><h3>HELTIX Clean</h3><div class="price">32,99 €</div><button class="buy" onclick="add('HELTIX Clean',32.99)">Ajouter au panier</button></div>
+</article>
+
+<article class="card">
+<div class="shirt-area"><div class="tshirt oversize"></div></div>
+<div class="info"><h3>HELTIX Oversize</h3><div class="price">39,99 €</div><button class="buy" onclick="add('HELTIX Oversize',39.99)">Ajouter au panier</button></div>
+</article>
+
+<article class="card">
+<div class="shirt-area"><div class="tshirt dark oversize"></div></div>
+<div class="info"><h3>HELTIX Oversize Black</h3><div class="price">39,99 €</div><button class="buy" onclick="add('HELTIX Oversize Black',39.99)">Ajouter au panier</button></div>
+</article>
+
+</div>
+</section>
+
+<section class="about" id="marque">
+<h2 class="title">HELTIX</h2>
+<p>Une identité sobre et moderne. Chaque pièce est pensée autour d'un logo discret placé au niveau du cœur.</p>
+</section>
+
+<footer>© 2026 HELTIX — Tous droits réservés</footer>
+<div id="toast">Ajouté au panier 🛒</div>
+
+<script>
+let cart=[];
+function add(name,price){
+ cart.push({name,price});
+ document.getElementById('count').textContent=cart.length;
+ const t=document.getElementById('toast');
+ t.textContent=name+" ajouté au panier 🛒";
+ t.classList.add('show');
+ setTimeout(()=>t.classList.remove('show'),1800);
+}
+function showCart(){
+ if(!cart.length){alert("Ton panier est vide.");return}
+ let total=cart.reduce((s,p)=>s+p.price,0);
+ let list=cart.map(p=>"• "+p.name+" — "+p.price.toFixed(2).replace('.',',')+" €").join("\\n");
+ alert("PANIER HELTIX\\n\\n"+list+"\\n\\nTotal : "+total.toFixed(2).replace('.',',')+" €");
+}
+</script>
+</body>
+</html>
